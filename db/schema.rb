@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(version: 2018_09_16_045533) do
     t.datetime "created"
     t.integer "effort"
     t.datetime "completion_date"
-    t.integer "support_id"
+    t.integer "user_id"
     t.integer "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_issues_on_employee_id"
-    t.index ["support_id"], name: "index_issues_on_support_id"
+    t.index ["user_id"], name: "index_issues_on_user_id"
   end
 
-  create_table "supports", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
     t.string "role"

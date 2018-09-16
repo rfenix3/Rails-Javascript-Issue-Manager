@@ -1,4 +1,4 @@
 class Issue < ApplicationRecord
-  belongs_to :support
+  belongs_to :user
   belongs_to :employee
 end
