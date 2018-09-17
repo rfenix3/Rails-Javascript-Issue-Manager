@@ -1,5 +1,10 @@
+<h2><%= current_user.name %></h2>
+<h2><%= current_user.role %></h2>
+
+
 <h1>Listing users</h1>
 
+<% byebug %>
 <% if @users.length == 0 %>
     <p> There are no users at this time. <p>
 <% else %>
@@ -16,13 +21,21 @@
         <td><strong>ID</strong></td>
         <td><strong>Name</strong></td>
         <td><strong>Role</strong></td>
+        <td><strong>Delete?</td>
         </tr>
+
         <% @users.each do |user| %>
-        <tr>
+          <tr>
             <td><a href="users/<%=user.id%>/edit"><%= user.id %></a>
             <td><%= user.name %></td>
             <td><%= user.role %></td>
-        </tr>
+
+            <% if user.role != "Admin" %>
+                <td><a href="/users/<%=user.id%>/delete">X</a></td>
+            <% else %>
+                <td></td>             
+            <% end %>    
+          </tr>
         <% end %>
     </tbody>
     </table>
@@ -30,4 +43,3 @@
   <% end%>
 <br>
 
-<p><%= link_to 'New Users', new_user_path %></p>

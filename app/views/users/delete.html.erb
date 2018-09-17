@@ -1,0 +1,19 @@
+<h2><%= current_user.name %></h2>
+<h2><%= current_user.role %></h2>
+
+<form>
+<label>Id:<br>
+<p><%= @user.id %><p>
+
+<label>Name:<br>
+<p><%= @user.name %><p>
+
+<label>Role:<br>
+<p><%= @user.role %><p>
+
+</form>
+
+<%= form_tag user_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+   <input type=submit value='Delete User'>    
+<% end %>
+
