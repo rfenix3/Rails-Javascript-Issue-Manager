@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete "/signout", to: "sessions#destroy"
 
   get "/users/:id/delete", to: "users#delete"
+  get "/employees/:id/delete", to: "employees#delete"
 
   resources :users
   resources :issues

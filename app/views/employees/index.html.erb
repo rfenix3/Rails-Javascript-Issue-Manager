@@ -2,10 +2,10 @@
 <h2><%= current_user.role %></h2>
 
 
-<h1>Listing users</h1>
+<h1>Listing Employees</h1>
 
-<% if @users.length == 0 %>
-    <p> There are no users at this time. <p>
+<% if @employees.length == 0 %>
+    <p> There are no employees at this time. <p>
 <% else %>
 
     <table class="table">
@@ -19,18 +19,17 @@
         <tr> 
         <td><strong>ID</strong></td>
         <td><strong>Name</strong></td>
-        <td><strong>Role</strong></td>
+        <td><strong>Department</strong></td>
         <td><strong>Delete?</td>
         </tr>
 
-        <% @users.each do |user| %>
+        <% @employees.each do |employee| %>
           <tr>
-            <td><a href="users/<%=user.id%>/edit"><%= user.id %></a>
-            <td><%= user.name %></td>
-            <td><%= user.role %></td>
-
-            <% if user.role != "Admin" %>
-                <td><a href="/users/<%=user.id%>/delete">X</a></td>
+            <td><a href="employees/<%=employee.id%>/edit"><%= employee.id %></a>
+            <td><%= employee.name %></td>
+            <td><%= employee.department %></td>
+            <% if current_user.role === "Admin" %>
+                <td><a href="/employees/<%=employee.id%>/delete">X</a></td>
             <% else %>
                 <td></td>             
             <% end %>    

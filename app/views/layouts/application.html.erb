@@ -32,6 +32,8 @@
               <% if current_user.role == "Admin" %>
                 <li><%= link_to 'All Users', users_path %></li>
                 <li><%= link_to 'Create New User', new_user_path %></li>
+                <li><%= link_to 'All Employees', employees_path %></li>
+                <li><%= link_to 'Create New Employee', new_employee_path %></li>
               <% end %>
 
               <li><%= link_to "Issues", issues_path %></li>

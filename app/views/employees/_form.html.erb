@@ -1,0 +1,17 @@
+<h2><%= current_user.name %></h2>
+<h2><%= current_user.role %></h2>
+
+<%= form_for(@employee) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name, "Name" %><br>
+      <%= f.text_field :name, class: "form-control" %></div>
+   
+    <div class="form-group">
+      <%= f.label :department, "Department" %><br>
+      <%= f.text_field :department, class: "form-control" %></div>
+  
+      <div class="actions">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>

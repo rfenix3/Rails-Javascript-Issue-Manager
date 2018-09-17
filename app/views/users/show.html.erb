@@ -14,11 +14,6 @@
 
 <p><%= link_to 'Edit', edit_user_path(@user) %></p>
 
-<% if current_user.role == "Admin" %>
-  <%= form_tag user_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <input type=submit value='Delete User'>    
-  <% end %>
-<% end %>
 
 
 
