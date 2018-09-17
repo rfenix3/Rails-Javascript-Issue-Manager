@@ -22,11 +22,12 @@ ActiveRecord::Schema.define(version: 2018_09_16_045533) do
   create_table "issues", force: :cascade do |t|
     t.string "title"
     t.string "status"
+    t.string "owner"
     t.datetime "created"
     t.integer "effort"
     t.datetime "completion_date"
-    t.integer "user_id"
     t.integer "employee_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_issues_on_employee_id"

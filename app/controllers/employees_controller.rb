@@ -21,14 +21,8 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
-      #byebug
-      if current_user.role != "Admin"
-        session[:user_id] = @user.id
-        redirect_to user_path(@user), notice: "Welcome to Issue Manager!"
-      else
       # Admin is redirected to employees index after creating a employee.
-        redirect_to employees_path
-      end
+      redirect_to employees_path
     else
       render :new
     end
@@ -62,11 +56,6 @@ class EmployeesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_user
-    #   @user = User.find(params[:id])
-    # end
-
     def require_admin
     #byebug
       redirect_to user_path(current_user) unless current_user.role === "Admin"

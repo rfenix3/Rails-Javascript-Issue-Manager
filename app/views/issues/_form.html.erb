@@ -1,0 +1,21 @@
+<%= form_for @issue do |f| %>
+    <%= f.label "Title" %>
+    <%= f.text_field :title %><br>
+    <%= f.label "Status" %>
+    <%= f.text_field :status %><br>
+    <%= f.label "Owner" %>
+    <%= f.collection_select :owner, User.all, :name, :name, include_blank: 'Choose an Owner' %><br>
+    <%= f.label "Created" %>
+    <%= f.text_field :created, value: Time.now %><br>
+    <%= f.label "Effort (hrs)" %>
+    <%= f.text_field :effort %><br>
+    <%= f.label "Completion Date" %>
+    <%= f.text_field :completion_date %><br>
+    <%= f.label "Employee/Caller" %>
+    <%= f.collection_select :employee_id, Employee.all, :id, :name, include_blank: 'Choose an Employee' %><br>
+    <%= f.label "User ID" %>
+    <%= f.text_field :user_id, value:current_user.id %><br>
+     <%= f.submit %>
+  <% end %>
+
+  # ['New', 1], ['Assigned', 2], ['In Progress', 3], ['Pending', 4], ['Resolved', 5], ['Closed', 6]])
