@@ -3,10 +3,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
   end 
 
   def show
+    set_user
     @message = params[:message] if params[:message]
     @message ||= false
   end
