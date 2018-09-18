@@ -23,13 +23,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #byebug
-      if current_user.role != "Admin"
-        session[:user_id] = @user.id
-        redirect_to user_path(@user), notice: "Welcome to Issue Manager!"
-      else
+      byebug
+      if !current_user.nil? && current_user.role === "Admin" 
         # Admin is redirected to users index after creating a user.
         redirect_to users_path
+      else
+        session[:user_id] = @user.id
+        redirect_to user_path(@user), notice: "Welcome to Issue Manager!"
       end
     else
       render :new

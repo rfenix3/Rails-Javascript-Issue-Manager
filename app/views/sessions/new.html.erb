@@ -1,8 +1,20 @@
+<% if @user.errors.any? %>
+<div id="error_explanation" class="field_with_errors">
+  <h2>There were some errors:</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 <%= form_for @user, url: {action: "create"} do |f| %>
 
     <div class="form-group">
       <%= f.label :name, "Select your name" %><br>
-      <%= f.select "name", options_from_collection_for_select(@users, "name", "name"), include_blank: false %>
+      <% byebug %>
+      <%= f.select "name", options_from_collection_for_select(@users, "name", "name"), include_blank: true %>
     </div>
   
     <div class="form-group">
