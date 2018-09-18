@@ -16,11 +16,11 @@ class IssuesController < ApplicationController
     byebug
     @issue = Issue.new(issue_params)
     if @issue.save
-      byebug
+      #byebug
       redirect_to issues_path
     else
       render :new
-      byebug
+      #byebug
     end
   end
 
@@ -29,7 +29,7 @@ class IssuesController < ApplicationController
   end
   
   def update
-    byebug
+    #byebug
     @issue = Issue.find(params[:id])
     if @issue.update(issue_params)
       redirect_to issues_path(current_user), notice: 'Issue was successfully updated.'

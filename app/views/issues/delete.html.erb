@@ -1,0 +1,37 @@
+<h2><%= current_user.name %></h2>
+<h2><%= current_user.role %></h2>
+
+<form>
+<label>Id:<br>
+<p><%= @issue.id %><p>
+
+<label>Title:<br>
+<p><%= @issue.title %><p>
+
+<label>Status:<br>
+<p><%= @issue.status %><p>
+
+<label>Owner:<br>
+<p><%= @issue.owner %><p>
+
+<label>Created:<br>
+<p><%= @issue.created %><p>
+
+<label>Completion:<br>
+<p><%= @issue.completion_date %><p>
+
+<% byebug %>
+<label>Created by:<br>
+<p><%= @issue.user.name %><p>
+
+<label>Escalated by:<br>
+<p><%= @issue.employee.name %><p>
+<p><%= @issue.employee.department %><p>
+
+
+</form>
+
+<%= form_tag issue_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+   <input type=submit value='Delete User'>    
+<% end %>
+
