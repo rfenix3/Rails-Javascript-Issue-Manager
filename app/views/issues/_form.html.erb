@@ -16,7 +16,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :status, "Status" %><br>
+    <%= f.label :status, "Status*" %><br>
     <%= f.text_field :status, class: "form-control" %>
   </div>
 
@@ -27,7 +27,7 @@
 
   <div class="form-group<%= ' field_with_errors' if @issue.errors[:created].any? %>">
     <%= f.label :created, "Created" %><br>
-    <%= f.text_field :created, value: Time.now, class: "form-control" %>
+    <%= f.text_field :created, class: "form-control" %>
   </div>
 
   <div class="form-group<%= ' field_with_errors' if @issue.errors[:effort].any? %>">
@@ -53,4 +53,10 @@
   <%= f.submit %>
 <% end %>
 
-  # ['New', 1], ['Assigned', 2], ['In Progress', 3], ['Pending', 4], ['Resolved', 5], ['Closed', 6]])
+<p>* New - service desk has received the incident but has not assigned it to an agent.</p>
+<p> Assigned - incident has been assigned to an individual service desk agent.</p>
+<p> In-Progress - incident has been assigned to an agent but has not been resolved. The agent is actively working with the user to diagnose and resolve the incident.</p>
+<p> On-Hold - incident requires some information or response from the user or from a third party. SLA response deadlines are not exceeded while waiting for a response from the user or vendor.</p>
+<p> Resolved - service desk has confirmed that the incident is resolved and that the user’s service has restored to the SLA levels.</p>
+<p> Closed - incident is resolved and that no further actions can be taken.</p>
+

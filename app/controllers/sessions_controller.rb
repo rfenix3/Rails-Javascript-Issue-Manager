@@ -17,11 +17,10 @@ class SessionsController < ApplicationController
       if @user = User.find_by(:name => oauth_email)
         session[:user_id] = @user.id
       else
-        byebug
+        # Default password is set to 'guest' for Github user
         @user = User.new(:name => oauth_email, :password => "guest", :role => "Guest")
         if @user.save
           session[:user_id] = @user.id
-          byebug
           redirect_to user_path(@user), notice: "Welcome back to issue manager!"
         else
           byebug
@@ -36,7 +35,7 @@ class SessionsController < ApplicationController
         #byebug
         redirect_to user_path(@user), notice: "Welcome back to issue manager!"
       else
-        # byebug
+        byebug
         # @user = User.new
         # @users = User.all
         # if params[:name].nil?

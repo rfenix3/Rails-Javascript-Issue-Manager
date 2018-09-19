@@ -1,11 +1,11 @@
 class IssuesController < ApplicationController
 
   def index
-    #byebug
+    byebug
     if params[:user_id]
-      @issues = User.find(params[:user_id]).issues
+      @issues = User.find(params[:user_id]).issues.order_by_latest
     else
-      @issues = Issue.all
+      @issues = Issue.all.order_by_latest
     end
   end 
     

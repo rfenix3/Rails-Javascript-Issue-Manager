@@ -6,4 +6,8 @@ class Issue < ApplicationRecord
   belongs_to :employee
   validates :user, :employee, presence: true
 
+  scope :order_by_latest, -> { order(created: :desc) }
+  # scope :created_before, ->(time) { where("created -  <= ?", time) }
+
+
 end
