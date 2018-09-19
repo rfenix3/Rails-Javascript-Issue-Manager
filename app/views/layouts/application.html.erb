@@ -36,8 +36,9 @@
                 <li><%= link_to 'Create New Employee', new_employee_path %></li>
               <% end %>
 
-              <li><%= link_to "New Issue", new_issue_path %></li>
-              <li><%= link_to "Issues List", issues_path %></li>
+              <li><%= link_to "New Issue", new_user_issue_path(current_user.id) %></li>
+              <li><%= link_to "My Issue List", user_issues_path(current_user.id) %></li>
+              <li><%= link_to "All Issues", issues_path %></li>
               <li><%= link_to "Log Out", signout_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "Sign Up", new_user_path %></li>

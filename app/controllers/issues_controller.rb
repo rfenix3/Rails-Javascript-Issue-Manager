@@ -1,7 +1,12 @@
 class IssuesController < ApplicationController
 
   def index
-    @issues = Issue.all
+    #byebug
+    if params[:user_id]
+      @issues = User.find(params[:user_id]).issues
+    else
+      @issues = Issue.all
+    end
   end 
     
   def show
