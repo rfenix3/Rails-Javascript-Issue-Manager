@@ -11,23 +11,19 @@ class IssuesController < ApplicationController
   def new
     byebug
     @issue = Issue.new
-    @owners = User.all
-    @employees = Employee.all
     byebug
   end
     
   def create
-    byebug
+    #byebug
     @issue = Issue.new(issue_params)
     if @issue.save
       #byebug
       redirect_to issues_path
     else
-      @issue = Issue.new
-      @owners = User.all
-      @employees = Employee.all
+      byebug
+      #@issue = Issue.new
       render :new
-      #byebug
     end
   end
 
