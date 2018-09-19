@@ -42,12 +42,12 @@ class EmployeesController < ApplicationController
   end
 
   def delete
-  #byebug
-  @employee = Employee.find(params[:id])
+    #byebug
+    @employee = Employee.find(params[:id])
   end
 
   def destroy
-  #byebug
+    #byebug
     @employee = Employee.find(params[:id])
     @employee.delete
 
@@ -61,7 +61,6 @@ class EmployeesController < ApplicationController
       redirect_to user_path(current_user) unless current_user.role === "Admin"
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       params.require(:employee).permit(
       :name,

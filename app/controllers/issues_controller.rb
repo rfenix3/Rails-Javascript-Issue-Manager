@@ -9,20 +9,16 @@ class IssuesController < ApplicationController
   end
     
   def new
-    byebug
     @issue = Issue.new
-    byebug
+    #byebug
   end
     
   def create
     #byebug
     @issue = Issue.new(issue_params)
     if @issue.save
-      #byebug
       redirect_to issues_path
     else
-      byebug
-      #@issue = Issue.new
       render :new
     end
   end
@@ -61,7 +57,6 @@ class IssuesController < ApplicationController
       redirect_to user_path(current_user) unless current_user.role === "Admin"
     end
   
-    # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
       params.require(:issue).permit(
       :title,

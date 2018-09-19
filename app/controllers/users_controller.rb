@@ -7,8 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @message = params[:message] if params[:message]
-    # @message ||= false
   end
 
   def new
@@ -23,7 +21,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      byebug
+      #byebug
       if !current_user.nil? && current_user.role === "Admin" 
         # Admin is redirected to users index after creating a user.
         redirect_to users_path
@@ -74,7 +72,6 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user) unless current_user.role === "Admin"
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(
         :name,
