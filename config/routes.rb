@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get "/employees/:id/delete", to: "employees#delete"
   get "/issues/:id/delete", to: "issues#delete"
 
-  resources :users
+  resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+
   resources :issues
   resources :employees
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

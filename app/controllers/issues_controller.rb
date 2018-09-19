@@ -9,7 +9,11 @@ class IssuesController < ApplicationController
   end
     
   def new
+    byebug
     @issue = Issue.new
+    @owners = User.all
+    @employees = Employee.all
+    byebug
   end
     
   def create
@@ -19,6 +23,9 @@ class IssuesController < ApplicationController
       #byebug
       redirect_to issues_path
     else
+      @issue = Issue.new
+      @owners = User.all
+      @employees = Employee.all
       render :new
       #byebug
     end
