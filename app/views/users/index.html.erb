@@ -8,38 +8,35 @@
     <p> There are no users at this time. <p>
 <% else %>
 
-    <table class="table table-bordered table-responsive table-sm table-hover">
+  <table class="table table-bordered table-responsive table-sm table-hover">
 
-    <thead>
-        <tr>
-        <th colspan="3"></th>
-        </tr>
-    </thead>
+  <thead>
+    <tr> 
+      <td><strong>ID</strong></td>
+      <td><strong>Name</strong></td>
+      <td><strong>Role</strong></td>
+      <td><strong>Delete?</td>
+    </tr>
+  </thead>
         
-    <tbody>
-        <tr> 
-        <td><strong>ID</strong></td>
-        <td><strong>Name</strong></td>
-        <td><strong>Role</strong></td>
-        <td><strong>Delete?</td>
-        </tr>
+  <tbody>
 
-        <% @users.each do |user| %>
-          <tr>
-            <td><a href="users/<%=user.id%>/edit"><%= user.id %></a>
-            <td><%= user.name %></td>
-            <td><%= user.role %></td>
+    <% @users.each do |user| %>
+      <tr>
+        <td><a href="users/<%=user.id%>/edit"><%= user.id %></a>
+        <td><%= user.name %></td>
+        <td><%= user.role %></td>
 
-            <% if user.role != "Admin" %>
-                <td><a href="/users/<%=user.id%>/delete">X</a></td>
-            <% else %>
-                <td></td>             
-            <% end %>    
-          </tr>
-        <% end %>
-    </tbody>
-    </table>
+        <% if user.role != "Admin" %>
+          <td><a href="/users/<%=user.id%>/delete">X</a></td>
+        <% else %>
+          <td></td>             
+        <% end %>    
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
 
-  <% end%>
+<% end%>
 <br>
 

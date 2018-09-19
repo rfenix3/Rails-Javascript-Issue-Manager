@@ -1,7 +1,7 @@
 class IssuesController < ApplicationController
 
   def index
-    byebug
+    #byebug
     if params[:user_id]
       @issues = User.find(params[:user_id]).issues.order_by_latest
     else

@@ -10,5 +10,6 @@ class User < ApplicationRecord
   has_many :issues, inverse_of: :user
   has_many :employees, :through => :issues
 
+  scope :L2_L3_only, -> { where(role: ["L2", "L3"]) }
 
 end
