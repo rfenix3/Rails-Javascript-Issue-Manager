@@ -17,6 +17,5 @@ The service desk is the single point of contact for customers to report IT-relat
 8. Forms correctly displays validation errors. 
 9. Uses helper methods and partials. 
 
-Do not use scaffolding to build your project. Your goal here is to learn. Scaffold is a way to get up and running quickly, but learning a lot is not one of the benefits of scaffolding. That’s why we do not allow the use of scaffolding for projects.
+## Table Relationship
 
-Example Domains
