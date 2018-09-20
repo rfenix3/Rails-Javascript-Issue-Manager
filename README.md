@@ -18,6 +18,5 @@ The service desk is the single point of contact for customers to report IT-relat
 9. Uses helper methods and partials. 
 
 ## Table Relationship
-[logo]: https://github.com/rfenix3/ruby-rails-crud-issue-manager/app/assets/images/RubyRailsProjectTableRelationship.png "Issue Manager table relationship"
+![alt text](https://drive.google.com/open?id=1DcYDJ9ynw8ujlpOo7TZuIcR1fwe7ojNa "Model and Table Relationship")
 
-    
