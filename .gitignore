@@ -31,4 +31,4 @@
 /config/master.key
 
 # Ignore github client ID and Client Secret file.
-./config/initializers/omniauth.rb
+/config/initializers/omniauth.rb

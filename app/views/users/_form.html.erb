@@ -24,8 +24,12 @@
   <div class="form-group<%= ' field_with_errors' if @user.errors[:role].any? %>">
     <%= f.label :role, "Role" %><br>
 
-    <% if current_user && current_user.role === "Admin" %>
-      <%= f.text_field :role, class: "form-control" %>
+    <% if current_user %>
+      <% if current_user.role === "Admin" %>
+        <%= f.text_field :role, class: "form-control" %>
+      <% else %>
+        <%= f.text_field :role, class: "form-control", readonly: true %>
+      <% end %>      
     <% else %>
       <%= f.text_field :role, class: "form-control", value: "Guest", readonly: true  %>
     <% end %>
