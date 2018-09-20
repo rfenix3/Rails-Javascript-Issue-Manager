@@ -18,5 +18,4 @@ The service desk is the single point of contact for customers to report IT-relat
 9. Uses helper methods and partials. 
 
 ## Table Relationship
-![alt text](https://drive.google.com/open?id=1DcYDJ9ynw8ujlpOo7TZuIcR1fwe7ojNa "Model and Table Relationship")
-
+![alt text](https://github.com/rfenix3/ruby-rails-crud-issue-manager/blob/master/app/assets/images/RubyRailsProjectTableRelationship.png "Model and Table Relationship")
