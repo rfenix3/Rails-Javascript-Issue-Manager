@@ -1,10 +1,9 @@
-<h2><%= current_user.name %></h2>
-<h2><%= current_user.role %></h2>
 
+    
 <label>Name: </label>
 <p><%= @user.name %></p>
 <label>Password: </label>
-<p><%= @user.password_digest %></p>
+<p>********     </p>
 <label>Role: </label>
 <p><%= @user.role %></p>
 <label>Created at: </label>
@@ -13,6 +12,9 @@
 <p><%= @user.updated_at %></p>
 
 <p><%= link_to 'Edit', edit_user_path(@user) %></p>
+      
+
+
 
 
 
