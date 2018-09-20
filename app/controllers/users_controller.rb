@@ -14,8 +14,9 @@ class UsersController < ApplicationController
     # logged-in users will not have access to new and create methods
     if current_user && current_user.role != "Admin"
       redirect_to user_path(current_user)
+    else
+      @user = User.new
     end
-    @user = User.new
   end
 
   def create

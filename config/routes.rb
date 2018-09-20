@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   get "/users/:id/delete", to: "users#delete"
   get "/employees/:id/delete", to: "employees#delete"
   get "/issues/:id/delete", to: "issues#delete"
-
-  resources :users
   
   resources :users do
     resources :issues, only: [:index, :new, :edit]
   end
 
+  #resources :users
   resources :issues
   resources :employees
 
