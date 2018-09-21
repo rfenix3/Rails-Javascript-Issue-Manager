@@ -1,4 +1,5 @@
 class IssuesController < ApplicationController
+  before_action :exclude_guest, only: [:new, :create, :edit, :update, :delete, :destroy]
 
   def index
     #byebug
@@ -62,6 +63,12 @@ class IssuesController < ApplicationController
       redirect_to user_path(current_user) unless current_user.role === "Admin"
     end
   
+    def exclude_guest
+      #byebug
+      redirect_to issues_path(current_user) if current_user.role.downcase === "guest"
+    end
+
+
     def issue_params
       params.require(:issue).permit(
       :title,

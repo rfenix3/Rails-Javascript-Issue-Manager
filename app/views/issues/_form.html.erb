@@ -11,8 +11,8 @@
   <% end %>
 
   <div class="form-group<%= ' field_with_errors' if @issue.errors[:title].any? %>">
-    <%= f.label :title, "Title" %><br>
-    <%= f.text_field :title, class: "form-control" %>
+    <%= f.label :title, "Title (Required)" %><br>
+    <%= f.text_field :title, class: "form-control", placeholder: "Required" %>
   </div>
 
   <div class="form-group">
@@ -26,8 +26,12 @@
   </div>
 
   <div class="form-group<%= ' field_with_errors' if @issue.errors[:created].any? %>">
-    <%= f.label :created, "Created" %><br>
-    <%= f.text_field :created, class: "form-control" %>
+    <%= f.label :created, "Created (Required)" %><br>
+    <% if @issue.created.nil? %>
+      <%= f.text_field :created, class: "form-control", value:Time.now %>
+    <% else %>
+      <%= f.text_field :created, class: "form-control" %>
+    <% end %>
   </div>
 
   <div class="form-group<%= ' field_with_errors' if @issue.errors[:effort].any? %>">
@@ -41,7 +45,7 @@
   </div>
 
   <div class="form-group<%= ' field_with_errors' if @issue.errors[:employee].any? %>">
-    <%= f.label :employee_id, "Employee/Caller" %><br>
+    <%= f.label :employee_id, "Employee/Caller (Required)" %><br>
     <%= f.collection_select :employee_id, Employee.all, :id, :name, include_blank: 'Choose an Employee', class: "form-control" %>
   </div>
 

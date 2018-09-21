@@ -17,7 +17,6 @@
 <label>Completion:<br>
 <p><%= @issue.completion_date %><p>
 
-<% byebug %>
 <label>Created by:<br>
 <p><%= @issue.user.name %><p>
 
@@ -29,6 +28,6 @@
 </form>
 
 <%= form_tag issue_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
-   <input type=submit value='Delete User'>    
+   <input type=submit value='Delete Issue'>    
 <% end %>
 
