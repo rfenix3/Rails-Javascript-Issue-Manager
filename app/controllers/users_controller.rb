@@ -80,5 +80,14 @@ class UsersController < ApplicationController
         :role
       )
     end
+
+    def user_params_except_password
+      params.require(:user).permit(
+        :name,
+        :role
+      )
+    end
+  
+
 end
 
