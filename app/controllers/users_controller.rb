@@ -54,12 +54,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    #byebug
     @user = User.find(params[:id])
-    @user.delete
-
+    if @user.delete
     #current_user should be Admin at this point since only Admin should have access to destroy method
     redirect_to users_path(current_user)   
+    else
+      #byebug
+      render :delete
+    end
+
   end
 
   private
@@ -81,13 +84,6 @@ class UsersController < ApplicationController
       )
     end
 
-    def user_params_except_password
-      params.require(:user).permit(
-        :name,
-        :role
-      )
-    end
-  
 
 end
 

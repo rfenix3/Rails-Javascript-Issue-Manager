@@ -1,29 +1,21 @@
 <form>
-<label>Id:<br>
-<p><%= @issue.id %><p>
+Id: <input type="text" value="<%= @issue.id %>" readonly=true><br>
 
-<label>Title:<br>
-<p><%= @issue.title %><p>
+Title: <input type="text" value="<%= @issue.title %>" readonly=true><br>
 
-<label>Status:<br>
-<p><%= @issue.status %><p>
+Status: <input type="text" value="<%= @issue.status %>" readonly=true><br>
 
-<label>Owner:<br>
-<p><%= @issue.owner %><p>
+Owner: <input type="text" value="<%= @issue.owner %>" readonly=true><br>
 
-<label>Created:<br>
-<p><%= @issue.created %><p>
+Created: <input type="text" value="<%= @issue.created %>" readonly=true><br>
 
-<label>Completion:<br>
-<p><%= @issue.completion_date %><p>
+Completion: <input type="text" value="<%= @issue.completion_date %>" readonly=true><br>
 
-<label>Created by:<br>
-<p><%= @issue.user.name %><p>
+Created by: <input type="text" value="<%= @issue.user.name %>" readonly=true><br>
 
-<label>Escalated by:<br>
-<p><%= @issue.employee.name %><p>
-<p><%= @issue.employee.department %><p>
+Escalated by:<input type="text" value="<%= @issue.employee.name %>" readonly=true><br>
 
+Department: <input type="text" value="<%= @issue.employee.department %>" readonly=true><br>
 
 </form>
 

@@ -15,19 +15,19 @@ class SessionsController < ApplicationController
       # They login via OAuth
       oauth_email = request.env["omniauth.auth"]["info"]["email"]
       if @user = User.find_by(:name => oauth_email)
-        #byebug
+        byebug
         session[:user_id] = @user.id
         redirect_to user_path(@user), notice: "Welcome back to issue manager!"
       else
         # Default password is set to 'guest' for Github user
-        #byebug
+        byebug
         @user = User.new(:name => oauth_email, :password => "guest", :role => "Guest")
         if @user.save
-          #byebug
+          byebug
           session[:user_id] = @user.id
           redirect_to user_path(@user), notice: "Welcome back to issue manager!"
         else
-          #byebug
+          byebug
           redirect_to signin_path
         end
       end
