@@ -2,7 +2,6 @@
 <%= form_for @user, url: {action: "create"}, method: "post" do |f| %>
 
   <% if @user.errors.any? %>
-    <% byebug %>
     <div id="error_explanation" class="field_with_errors">
     <h2>There were some errors:</h2>
     <ul>
