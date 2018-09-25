@@ -7,13 +7,14 @@ class SessionsController < ApplicationController
   
   def new
     @user = User.new
-    @users = User.all
+    #@users = User.all
   end
   
   def create
     if request.env["omniauth.auth"]
       # They login via OAuth
-      oauth_email = request.env["omniauth.auth"]["info"]["email"]
+      byebug
+      oauth_email = request.env["omniauth.auth"]["info"]["nickname"]
       if @user = User.find_by(:name => oauth_email)
         byebug
         session[:user_id] = @user.id
@@ -34,27 +35,26 @@ class SessionsController < ApplicationController
     else
       # Normal login with user name and password
       @user = User.find_by(name: params[:user][:name])
+      #byebug
       if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
         #byebug
         redirect_to user_path(@user), notice: "Welcome back to issue manager!"
       else
-        byebug
-        # @user = User.new
-        # @users = User.all
-        # if params[:name].nil?
-        #   @user.errors.add(:name, "cannot be blank.")
-        # end
-        # if params[:password].nil? 
-        #   @user.errors.add(:password, "cannot be blank.")
-        # end
-        # if !params[:password].nil? 
-        #   @user.errors.add(:password, "is wrong.")
-        # end
-        #render :new
-        redirect_to signin_path
+        #byebug
+        @user.errors.add(:password, "Username and Password must match or exist")
+        render template: "sessions/new"
+        #redirect_to sessions_new_path
       end
     end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(
+      :name,
+      :password
+    )
   end
   
 end
