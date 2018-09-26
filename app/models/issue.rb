@@ -8,7 +8,6 @@ class Issue < ApplicationRecord
 
   scope :order_by_latest, -> { order(created: :desc) }
   scope :order_by_effort, -> { order(effort: :asc) }
-  scope :order_by_employee, -> { order("employee_id.name": :asc) }
     
   # scope :created_before, ->(time) { where("created -  <= ?", time) }
 
