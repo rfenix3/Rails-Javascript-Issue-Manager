@@ -31,3 +31,42 @@ The service desk is the single point of contact for customers to report IT-relat
 5. Forms correctly displays validation errors. 
 6. Allows login from Github.
 
+## Technology Used
+* Ruby
+* Rails
+* ActiveRecord
+* SQLite3
+* Bootstrap
+
+## Pre-requisite
+* Integrated Development Environment (IDE) or Amazon Web Services (AWS) Cloud9
+
+## Get Started
+1. Clone repository
+```
+$ git clone https://github.com/rfenix3/ruby-rails-crud-issue-manager.git
+```
+2. Install bundle
+```
+$ bundle install
+```
+3. Run database migration
+```
+$ bin/rails db:migrate RAILS_ENV=development
+```
+4. Seed database table
+```
+$ rake db:seed
+```
+5. Open web browser and type in the localhost on url window
+```
+http://localhost:xxxx
+```
+## Home Page
+![alt text](https://github.com/rfenix3/ruby-rails-crud-issue-manager/blob/master/app/assets/images/HomePage.png "Home Page screen shot")
+
+## Tip:
+For demo purposes, Admin password for this application is 'admin'.
+Other user's password is their user name in downcase.
+
+
