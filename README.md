@@ -6,6 +6,9 @@ This is a complete Rails application that manages related data through complex f
 
 The service desk is the single point of contact for customers to report IT-related incidents. As such, this application aims to help service desk support staffs to capture and track IT issues promptly, work collaboratively, encourage knowledge transfer, collect IT  data trend, and support problem management requirements.
 
+## Home Page
+![alt text](https://github.com/rfenix3/ruby-rails-crud-issue-manager/blob/master/app/assets/images/HomePage.png "Home Page screen shot")
+
 ## Characteristics of the Application
 1. Uses the Ruby on Rails framework (MVC or Model-View-Controller framework).
 2. Includes has_many, belongs_to, and has_many :through relationship among tables.
@@ -62,8 +65,6 @@ $ rake db:seed
 ```
 http://localhost:xxxx
 ```
-## Home Page
-![alt text](https://github.com/rfenix3/ruby-rails-crud-issue-manager/blob/master/app/assets/images/HomePage.png "Home Page screen shot")
 
 ## Tip:
 For demo purposes, Admin password for this application is 'admin'.
