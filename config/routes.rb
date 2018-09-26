@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   get "/users/:id/delete", to: "users#delete"
   get "/employees/:id/delete", to: "employees#delete"
   get "/issues/:id/delete", to: "issues#delete"
-  
+
+  # Sorting Issues
+  get "/issues/by_effort", to: "issues#effort_sort"
+ 
   resources :users do
     resources :issues, only: [:index, :new, :edit]
   end

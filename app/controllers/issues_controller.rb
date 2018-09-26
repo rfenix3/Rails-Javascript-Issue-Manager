@@ -4,12 +4,18 @@ class IssuesController < ApplicationController
   def index
     #byebug
     if params[:user_id]
-      @issues = User.find(params[:user_id]).issues.order_by_latest
+      @issues = User.find(params[:user_id]).issues.order_by_latest    
     else
       @issues = Issue.all.order_by_latest
     end
   end 
     
+  #sort index output by effort
+  def effort_sort
+    @issues = Issue.all.order_by_effort  
+    render :index  
+  end
+
   def show
     @issue = Issue.find(params[:id])
   end

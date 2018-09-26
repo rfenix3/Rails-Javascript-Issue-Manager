@@ -28,15 +28,19 @@ class SessionsController < ApplicationController
         end
       end
     else
-      # Normal login with user name and password    
-      @user = User.find_by(name: params[:user][:name])
-      if @user && @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to user_path(@user), notice: "Welcome back to issue manager!"
+      # Normal login with user name and password        
+      if @user = User.find_by(name: params[:user][:name])
+        if @user && @user.authenticate(params[:user][:password])
+          session[:user_id] = @user.id
+          redirect_to user_path(@user), notice: "Welcome back to issue manager!"
+        else
+          @user.errors.add(:password, "Username and Password must match or exist")
+          render template: "sessions/new"
+          #redirect_to sessions_new_path
+        end
       else
-        @user.errors.add(:password, "Username and Password must match or exist")
+        @user = User.new
         render template: "sessions/new"
-        #redirect_to sessions_new_path
       end
     end
   end
