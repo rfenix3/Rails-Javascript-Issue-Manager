@@ -10,9 +10,12 @@ User.destroy_all
 Employee.destroy_all
 
 User.create(name: "Admin", password: "admin", role: "Admin")
+User.create(name: "Tudor", password: "tudor", role: "L2")
 User.create(name: "Rich", password: "rich", role: "L2")
+User.create(name: "Grace", password: "grace", role: "L2")
+User.create(name: "Roland", password: "roland", role: "L2")
 User.create(name: "Lito", password: "lito", role: "L1")
-User.create(name: "Jun", password: "lito", role: "Guest")
+User.create(name: "Jun", password: "jun", role: "Guest")
 
 Employee.create(name: "Gilbert", department: "Manufacturing")
 Employee.create(name: "Mae", department: "Planning")
