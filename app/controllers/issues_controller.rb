@@ -2,14 +2,12 @@ class IssuesController < ApplicationController
   before_action :exclude_guest, only: [:new, :create, :edit, :update, :delete, :destroy]
 
   def index
-    #byebug
     if params[:user_id]
       @issues = User.find(params[:user_id]).issues.order_by_latest
-      #respond_to do |format|
-        #format.html { render index }
-        #format.json { render json: @issues, status: 200 }
-      #end
-      render json: @issues, status: 200
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @issues, status: 200 }
+      end
     else
       @issues = Issue.all.order_by_latest
     end
@@ -23,15 +21,17 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @issue, status: 200 }
+    end
   end
     
   def new
     @issue = Issue.new
-    #byebug
   end
     
   def create
-    #byebug
     @issue = Issue.new(issue_params)
     if @issue.save
       redirect_to issues_path
@@ -45,7 +45,6 @@ class IssuesController < ApplicationController
   end
   
   def update
-    #byebug
     @issue = Issue.find(params[:id])
     if @issue.update(issue_params)
       redirect_to issues_path(current_user), notice: 'Issue was successfully updated.'
@@ -55,12 +54,10 @@ class IssuesController < ApplicationController
   end
  
   def delete
-    #byebug
     @issue = Issue.find(params[:id])
   end
     
   def destroy
-    #byebug
     @issue = Issue.find(params[:id])
     @issue.delete
     
@@ -70,12 +67,10 @@ class IssuesController < ApplicationController
     
   private
     def require_admin
-    #byebug
       redirect_to user_path(current_user) unless current_user.role === "Admin"
     end
   
     def exclude_guest
-      #byebug
       redirect_to issues_path(current_user) if current_user.role.downcase === "guest"
     end
 

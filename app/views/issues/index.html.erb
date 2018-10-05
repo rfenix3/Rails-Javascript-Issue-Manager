@@ -26,7 +26,7 @@
         <% @issues.each do |issue| %>
           <tr>
             <td><a href="issues/<%=issue.id%>/edit"><%= issue.id %></a>
-            <td><%= issue.title %></td>
+            <td><a href="issues/<%=issue.id%>"><%= issue.title %></td>
             <td><%= issue.status %></td>
             <td><%= issue.owner %></td>
             <td><%= issue.created %></td>

@@ -1,0 +1,29 @@
+<h1>Show Issue</h1>
+<p class="issueTitle">Title: <%= @issue.title %></p>
+<p class="issueStatus">Status: <%= @issue.status %></p>
+<p class="issueOwner">Owner: <%= @issue.owner %></p>
+<p class="issueCreated">Created: <%= @issue.created %></p>
+<p class="issueEffort">Effort (hrs): <%= @issue.effort %></p>
+<p class="issueCompletion">Completion Date: <%= @issue.completion_date %></p>
+<p class="issueEmployee">Employee/Caller: <%= @issue.employee.name %></p>
+<p class="issueUser">UserID: <%= @issue.user.name %></p>
+
+
+<a href="/issues/<%=@issue.id%>/edit" class="btn btn-warning" role="button">Update Issue</a>
+<a href="#" class="js-next btn btn-info" data-id="<%=@issue.id%>"> Next Issue </a>
+
+# $(function () {
+#   $(".js-next").on("click", function(event) {
+#     event.stopPropagation();
+#     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+#     $.get("/issues/" + nextId + ".json", function(data) {
+#       $(".productName").text("Product: " + data["name"]);
+#       $(".productPrice").text("Price: $" + data["price"]);
+#       $(".productDescription").text(data["description"]);
+#       $(".productInventory").text(data["inventory"]);
+#       // re-set the id to current on the link
+#       $(".js-next").attr("data-id", data["id"]);
+#     });
+#   });
+# });
+# </script>
