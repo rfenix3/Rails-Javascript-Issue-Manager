@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/issues/by_effort", to: "issues#effort_sort"
  
   resources :users do
-    resources :issues, only: [:index, :new, :edit]
+    resources :issues, only: [:index, :new, :edit, :show]
   end
 
   #resources :users
