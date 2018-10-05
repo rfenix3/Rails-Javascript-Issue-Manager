@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# ruby '2.3.6'
-ruby '2.4.1'
+ruby '2.3.6'
+#ruby '2.4.1'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -29,6 +29,8 @@ gem 'omniauth-github'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'active_model_serializers'
 
 # Run Rails on Postgres db for Heroku
 # gem 'pg'
