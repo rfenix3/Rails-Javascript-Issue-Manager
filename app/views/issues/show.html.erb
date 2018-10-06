@@ -1,19 +1,34 @@
 <h1>Show Issue</h1>
-<p id="issueId">Issue ID: <%= @issue.id %></p>
-<p id="issueTitle">Title: <%= @issue.title %></p>
-<p id="issueStatus">Status: <%= @issue.status %></p>
-<p id="issueOwner">Owner: <%= @issue.owner %></p>
-<p id="issueCreated">Created: <%= @issue.created %></p>
-<p id="issueEffort">Effort (hrs): <%= @issue.effort %></p>
-<p id="issueCompletion">Completion Date: <%= @issue.completion_date %></p>
-<p id="issueEmployee">Employee/Caller: <%= @issue.employee.name %></p>
-<p id="issueUser">UserID: <%= @issue.user.name %></p>
 
+<div class="show_page">
+  <a href="/issues/<%=@issue.id%>/edit" class="btn btn-warning" role="button">Update Issue</a>
+  <a href="" id="jx-next" class="btn btn-info" data-id="<%=@issue.id%>"> Next Issue </a>
+  <a href="#" id="js-next" data-id="<%=@issue.id%>">Next Issue</a>
+</div>
 
-<a href="/issues/<%=@issue.id%>/edit" class="btn btn-warning" role="button">Update Issue</a>
-<a href="" id="jx-next" class="btn btn-info" data-id="<%=@issue.id%>"> Next Issue </a>
+<div class="show_page">
+  <p id="issueId">Issue ID: <%= @issue.id %></p>
+  <p id="issueTitle">Title: <%= @issue.title %></p>
+  <p id="issueStatus">Status: <%= @issue.status %></p>
+  <p id="issueOwner">Owner: <%= @issue.owner %></p>
+  <p id="issueCreated">Created: <%= @issue.created %></p>
+  <p id="issueEffort">Effort (hrs): <%= @issue.effort %></p>
+  <p id="issueCompletion">Completion Date: <%= @issue.completion_date %></p>
+  <p id="issueEmployee">Employee/Caller: <%= @issue.employee.name %></p>
+  <p id="issueUser">UserID: <%= @issue.user.name %></p>
+</div>
 
-<a href="#" id="js-next" data-id="<%=@issue.id%>">Next Issue</a>
+<h3>Comments/Notes: </h3>
+<% if @issue.comments.length == 0 %>
+  <p> There are no comments at this time. <p>
+<% else %>       
+  <% @issue.comments.each do |comment| %>
+    <div class="show_page">
+      <p> <%= comment.comment  %> There is a number of comments... </p>
+    </div>
+  <% end %>
+<% end %>
+
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
@@ -39,4 +54,8 @@ $(function () {
   });
 });
 </script>
+
+
+
+
 

@@ -6,6 +6,9 @@ class Issue < ApplicationRecord
   belongs_to :employee
   validates :user, :employee, presence: true
 
+  has_many :comments, inverse_of: :issue
+  # has_many :users, :through => :comments
+
   scope :order_by_latest, -> { order(created: :desc) }
   scope :order_by_effort, -> { order(effort: :asc) }
     
