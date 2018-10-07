@@ -21,6 +21,8 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    #@comment = Comment.new(issue_id: params[:id], user_id: params[:user_id])
+    #byebug;
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @issue, status: 200 }

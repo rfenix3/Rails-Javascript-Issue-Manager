@@ -2,7 +2,6 @@
 
 <div class="show_page">
   <a href="/issues/<%=@issue.id%>/edit" class="btn btn-warning" role="button">Update Issue</a>
-  <a href="" id="jx-next" class="btn btn-info" data-id="<%=@issue.id%>"> Next Issue </a>
   <a href="#" id="js-next" data-id="<%=@issue.id%>">Next Issue</a>
 </div>
 
@@ -18,17 +17,12 @@
   <p id="issueUser">UserID: <%= @issue.user.name %></p>
 </div>
 
-<h3>Comments/Notes: </h3>
-<% if @issue.comments.length == 0 %>
-  <p> There are no comments at this time. <p>
-<% else %>       
-  <% @issue.comments.each do |comment| %>
-    <div class="show_page">
-      <p> <%= comment.comment  %> There is a number of comments... </p>
-    </div>
-  <% end %>
-<% end %>
+<h3><%= link_to "Comments/Notes:", issue_comments_path(@issue), id: "load_comments" %></h3>
 
+<div>
+  <ol>
+  </ol>
+</div>
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
@@ -47,12 +41,33 @@ $(function () {
       $("#issueEmployee").text("Employee/Caller: " + data["employee"]["name"]);
       $("#issueUser").text("Support: " + data["user"]["name"]);
 
+      // reset comments section
+      $("ol").empty();
+      var newUrl = "/issues/" + data["id"] + "/comments"
+      $("#load_comments").attr("href", newUrl);
+
       // re-set the id to current on the link
       $("#js-next").attr("data-id", data["id"]);
       console.log("Current data-id: " + data["id"])
     });
   });
 });
+
+$("#load_comments").on("click", function(event){
+  event.preventDefault(); 
+  $("ol").empty();
+  console.log(this.href); 
+  $.get(this.href, function(data){
+    if (data.length === 0) {
+      $("ol").append("<li> There are no comments are this time.</li>");
+    } else {
+      for (let comment of data) {
+        $("ol").append("<li>" + comment.comment + "</li>")
+      } 
+    }
+  })
+})
+
 </script>
 
 
