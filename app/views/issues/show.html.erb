@@ -37,7 +37,9 @@
 $(function () {
   $("#js-next").on("click", function(event) {
     event.stopPropagation();
+
     var nextId = parseInt($("#js-next").attr("data-id")) - 1;
+
     $.get("/issues/" + nextId + ".json", function(data) {
       console.log(data);
       $("#issueId").text("Issue ID: " + data["id"]);
@@ -50,10 +52,13 @@ $(function () {
       $("#issueEmployee").text("Employee/Caller: " + data["employee"]["name"]);
       $("#issueUser").text("Support: " + data["user"]["name"]);
 
-      // reset comments section
+      // re-set comments section
       $("ol").empty();
       var newUrl = "/issues/" + data["id"] + "/comments"
       $("#load_comments").attr("href", newUrl);
+
+      // re-set comments form_for to get the next issue ID
+      $("#comment_issue_id").attr("value", nextId)
 
       // re-set the id to current on the link
       $("#js-next").attr("data-id", data["id"]);

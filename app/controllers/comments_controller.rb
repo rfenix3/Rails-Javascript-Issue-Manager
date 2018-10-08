@@ -11,10 +11,10 @@ class CommentsController < ApplicationController
     render json: @comments
   end
 
-  def show
-    @comments = @issue.comments
-    @comment = Comment.new
-  end
+  # def show
+  #   @comments = @issue.comments
+  #   @comment = Comment.new
+  # end
 
   def create
     @comment = @issue.comments.build(comments_params)
