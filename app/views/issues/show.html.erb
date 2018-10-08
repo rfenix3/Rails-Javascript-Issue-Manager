@@ -19,10 +19,19 @@
 
 <h3><%= link_to "Comments/Notes:", issue_comments_path(@issue), id: "load_comments" %></h3>
 
-<div>
+<div class="listOfComments">
   <ol>
   </ol>
 </div>
+
+<label>Add Comments: </label> 
+<%= form_for([@issue, @comment]) do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.text_field :user_id, type: "hidden", value: current_user.id %>
+  <%= f.text_field :issue_id, type: "hidden", value: @issue.id %>
+  <p><%= f.submit 'Submit', data: { disable_with: false } %></p>
+
+<% end %>
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
@@ -68,8 +77,27 @@ $("#load_comments").on("click", function(event){
   })
 })
 
-</script>
+$(function(){
+  $("#new_comment").on("submit", function(event){
 
+    console.log(this.action);
+  
+    var values = $(this).serialize();
+    console.log(values);
+ 
+    var posting = $.post(this.action, values);
+
+    posting.done(function(data) {
+    console.log(data);
+    $("div.listOfComments ol").append("<li>" + data["comment"] + "</li>")
+    $("#comment_comment").val("");
+    });
+    event.preventDefault();
+  });
+});
+
+
+</script>
 
 
 
