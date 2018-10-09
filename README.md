@@ -1,8 +1,8 @@
 # Rails Issue Manager
-A Rails CRUD (Create Read Update Delete) application for managing issues.
+A Rails and Javascript CRUD (Create Read Update Delete) application for managing issues.
 
 ## Description and Purpose
-This is a complete Rails application that manages related data through complex forms and RESTful routes. The goal of the application is to build an Issue Management System to support one of ITIL Incident Management's main function: The Service Desk. 
+This is a complete Rails with Javascript application that manages related data through complex forms and RESTful routes. The goal of the application is to build an Issue Management System to support one of ITIL Incident Management's main function: The Service Desk. 
 
 The service desk is the single point of contact for customers to report IT-related incidents. As such, this application aims to help service desk support staffs to capture and track IT issues promptly, work collaboratively, encourage knowledge transfer, collect IT  data trend, and support problem management requirements.
 
@@ -11,16 +11,18 @@ The service desk is the single point of contact for customers to report IT-relat
 
 ## Characteristics of the Application
 1. Uses the Ruby on Rails framework (MVC or Model-View-Controller framework).
-2. Includes has_many, belongs_to, and has_many :through relationship among tables.
-3. Includes reasonable validations when creating records and defends against invalid data.
-4. Includes class level ActiveRecord scope methods.
-5. Provides standard user authentication for signup, login, logout, and passwords. 
-6. Uses nested resource with the appropriate RESTful URLs. 
-7. Uses helper methods and partials. 
-8. Uses bootstrap for the views and layouts.
+2. Uses Javascript with Active Model Serialization JSON backend.
+3. Includes has_many, belongs_to, and has_many :through relationship among tables.
+4. Includes reasonable validations when creating records and defends against invalid data.
+5. Includes class level ActiveRecord scope methods.
+6. Provides standard user authentication for signup, login, logout, and passwords. 
+7. Uses nested resource with the appropriate RESTful URLs. 
+8. Uses helper methods and partials. 
+9. Uses bootstrap for the views and layouts.
 
 ## Table Relationship
 ![alt text](https://github.com/rfenix3/ruby-rails-crud-issue-manager/blob/master/app/assets/images/RubyRailsProjectTableRelationship.png "Model and Table Relationship")
+Note: This model will be updated in Oct 2018 to include a comments table.
 
 ## Application Features
 1. Allows user signin or signup.
@@ -33,13 +35,15 @@ The service desk is the single point of contact for customers to report IT-relat
 4. Only users with 'Admin' role can change user's role.
 5. Forms correctly displays validation errors. 
 6. Allows login from Github.
+7. Allows adding comments to issues and dynamically renders comments in issue page.
 
 ## Technology Used
-* Ruby
-* Rails
-* ActiveRecord
-* SQLite3
-* Bootstrap
+1. Ruby Rails
+2. ActiveRecord
+3. Javascript
+4. JQuery
+5. SQLite3
+6. Bootstrap
 
 ## Pre-requisite
 * Integrated Development Environment (IDE) or Amazon Web Services (AWS) Cloud9
@@ -69,5 +73,3 @@ http://localhost:xxxx
 ## Tip:
 For demo purposes, Admin password for this application is 'admin'.
 Other user's password is their user name in downcase.
-
-
