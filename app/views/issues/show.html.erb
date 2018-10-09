@@ -20,8 +20,19 @@
 <h3><%= link_to "Comments/Notes:", issue_comments_path(@issue), id: "load_comments" %></h3>
 
 <div class="listOfComments">
-  <ol>
-  </ol>
+  <table class="table table-bordered table-responsive table-sm table-hover">
+    <thead>
+      <tr>
+      <td><strong>ID</strong></td>
+      <td><strong>Comment</strong></td>
+      <td><strong>User</strong></td>
+      <td><strong>Created at</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
 </div>
 
 <label>Add Comments: </label> 
@@ -53,11 +64,12 @@ $(function () {
       $("#issueUser").text("Support: " + data["user"]["name"]);
 
       // re-set comments section
-      $("ol").empty();
+      $("tbody").empty();
       var newUrl = "/issues/" + data["id"] + "/comments"
       $("#load_comments").attr("href", newUrl);
 
-      // re-set comments form_for to get the next issue ID
+      // re-set form_for form-action and comments-issue-id value to the next issue ID
+      $("#new_comment").attr("action", newUrl);
       $("#comment_issue_id").attr("value", nextId)
 
       // re-set the id to current on the link
@@ -69,14 +81,22 @@ $(function () {
 
 $("#load_comments").on("click", function(event){
   event.preventDefault(); 
-  $("ol").empty();
+  $("tbody").empty();
   console.log(this.href); 
   $.get(this.href, function(data){
     if (data.length === 0) {
-      $("ol").append("<li> There are no comments are this time.</li>");
+      $("tbody").append("No comments at this time.");
     } else {
       for (let comment of data) {
-        $("ol").append("<li>" + comment.comment + "</li>")
+
+        var markup = `<tr> 
+                        <td>${comment.id}</td> 
+                        <td>${comment.comment}</td> 
+                        <td>${comment.user_id}</td> 
+                        <td>${comment.created_at}</td>
+                      </tr>`;
+        $("table tbody").append(markup);     
+
       } 
     }
   })
@@ -85,16 +105,27 @@ $("#load_comments").on("click", function(event){
 $(function(){
   $("#new_comment").on("submit", function(event){
 
-    console.log(this.action);
-  
+    //console.log(this.action); 
+     
     var values = $(this).serialize();
-    console.log(values);
- 
+
     var posting = $.post(this.action, values);
 
     posting.done(function(data) {
-    console.log(data);
-    $("div.listOfComments ol").append("<li>" + data["comment"] + "</li>")
+
+    let issueComment = new Comment(data["id"], data["comment"], data["issue_id"], data["user_id"], data["created_at"]);
+
+    console.log(issueComment);
+    issueComment.getUserName();
+
+    var markup = `<tr> 
+                    <td>${issueComment.id}</td> 
+                    <td>${issueComment.comment}</td> 
+                    <td>${issueComment.user_id}</td> 
+                    <td>${issueComment.created_at}</td>
+                  </tr>`;
+    $("table tbody").append(markup);     
+
     $("#comment_comment").val("");
     });
     event.preventDefault();

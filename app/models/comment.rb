@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  validates :comment, presence: true
+
   belongs_to :issue
-  #belongs_to :user
 end
