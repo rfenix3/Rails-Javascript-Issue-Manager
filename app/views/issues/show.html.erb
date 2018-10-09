@@ -115,14 +115,11 @@ $(function(){
 
     let issueComment = new Comment(data["id"], data["comment"], data["issue_id"], data["user_id"], data["created_at"]);
 
-    console.log(issueComment);
-    issueComment.getUserName();
-
     var markup = `<tr> 
                     <td>${issueComment.id}</td> 
                     <td>${issueComment.comment}</td> 
                     <td>${issueComment.user_id}</td> 
-                    <td>${issueComment.created_at}</td>
+                    <td>${issueComment.formatCreateDate()}</td>
                   </tr>`;
     $("table tbody").append(markup);     
 
