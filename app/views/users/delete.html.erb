@@ -1,25 +1,25 @@
+
 <% if @user.errors.any? %>
-<div id="error_explanation" class="field_with_errors">
-  <h2>There were some errors:</h2>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-</div>
-<% end %>
+  <div id="error_explanation" class="field_with_errors">
+    <h2>There were some errors:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  </div>
+  <% end %>
 
+  <form>
+    User Id: <input type="text" value="<%= @user.id %>" readonly=true><br>
 
-<form>
-User Id: <input type="text" value="<%= @user.id %>" readonly=true><br>
+    Name: <input type="text" value="<%= @user.name %>" readonly=true><br>
 
-Name: <input type="text" value="<%= @user.name %>" readonly=true><br>
+    Role: <input type="text" value="<%= @user.role %>" readonly=true><br>
 
-Role: <input type="text" value="<%= @user.role %>" readonly=true><br>
+  </form>
 
-</form>
-
-<%= form_tag user_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
-   <input type=submit value='Delete User'>    
-<% end %>
+  <%= form_tag user_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <input type=submit value='Delete User'>    
+  <% end %>
 

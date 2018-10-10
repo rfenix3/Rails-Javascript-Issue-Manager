@@ -19,11 +19,13 @@
 
 <h3><%= link_to "Comments/Notes:", issue_comments_path(@issue), id: "load_comments" %></h3>
 
+<p id="commentMessage"></p>
+
 <div class="listOfComments">
   <table class="table table-bordered table-responsive table-sm table-hover">
     <thead>
       <tr>
-      <td><strong>ID</strong></td>
+      <td><strong>Comment ID</strong></td>
       <td><strong>Comment</strong></td>
       <td><strong>User</strong></td>
       <td><strong>Created at</strong></td>
@@ -75,6 +77,10 @@ $(function () {
       // re-set the id to current on the link
       $("#js-next").attr("data-id", data["id"]);
       console.log("Current data-id: " + data["id"])
+
+      // re-set comment message
+      $("#commentMessage").empty();
+
     });
   });
 });
@@ -85,7 +91,7 @@ $("#load_comments").on("click", function(event){
   console.log(this.href); 
   $.get(this.href, function(data){
     if (data.length === 0) {
-      $("tbody").append("No comments at this time.");
+      $("#commentMessage").text( "No comments at this time.");
     } else {
       for (let comment of data) {
 
@@ -123,7 +129,11 @@ $(function(){
                   </tr>`;
     $("table tbody").append(markup);     
 
+    // clear Add Comment textarea
     $("#comment_comment").val("");
+
+    // empty commentMessage 
+    $("#commentMessage").empty();
     });
     event.preventDefault();
   });
