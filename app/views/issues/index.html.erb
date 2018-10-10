@@ -4,7 +4,9 @@
     <p> There are no issues at this time. <p>
 <% else %>
 
-    <table class="table table-bordered table-responsive table-sm table-hover">
+    <p>Not loaded yet.</p>
+
+    <table id="issuesTable" class="table table-bordered table-responsive table-sm table-hover">
     <thead>
         <tr>
         <td><strong>ID</strong></td>
@@ -22,7 +24,7 @@
         </tr>
     </thead>
         
-    <tbody>
+    <tbody id="issuesTableBody" >
         <% @issues.each do |issue| %>
           <tr>
             <td><a href="issues/<%=issue.id%>/edit"><%= issue.id %></a>

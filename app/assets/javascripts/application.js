@@ -16,4 +16,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require user_issue_list
+//= require comment_object
+//= require issues
 

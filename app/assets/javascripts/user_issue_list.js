@@ -1,13 +1,44 @@
 $(document).ready(function(){
 
-//   $(function () {
-//   $("#userIssueList").on("click", function(event) {
-//     event.stopPropagation();
+  $( "p" ).text( "The DOM is now loaded and can be manipulated." );
 
-//     var nextId = parseInt($("#js-next").attr("data-id")) - 1;
+  $(function () {
+    $("#userIssueList").on("click", function(event) {
+      event.preventDefault();
 
-//     $.get("/issues/" + nextId + ".json", function(data) {
-//       console.log(data);
+      var userIssuesURL = $("#userIssueList a").attr("href");
+      //console.log(userIssuesURL);
+      $("tbody").empty();
+
+      $.get(userIssuesURL + ".json", function(data) {
+        console.log(data);
+        //alert("Captured View user issues!");
+        if (data.length === 0) {
+          $("tbody").append("No comments at this time.");
+        } else {
+          for (let issue of data) {
+    
+            var markup = `<tr> 
+                            <td>${issue.id}</td> 
+                            <td>${issue.title}</td> 
+                            <td>${issue.status}</td> 
+                            <td>${issue.owner}</td>
+                            <td>${issue.created}</td>
+                            <td>${issue.effort}</td>
+                            <td>${issue.completion_date}</td>
+                            <td>${issue.employee_id}</td>
+                            <td>${issue.user_id}</td>
+                            <td>Department</td>
+                            <td>X</td>
+                          </tr>`;
+            $("table tbody").append(markup);     
+    
+          } 
+        }
+
+
+
+        
 //       $("#issueId").text("Issue ID: " + data["id"]);
 //       $("#issueTitle").text("Title: " + data["title"]);
 //       $("#issueStatus").text("Status: " + data["status"]);
@@ -31,7 +62,7 @@ $(document).ready(function(){
 //       $("#js-next").attr("data-id", data["id"]);
 //       console.log("Current data-id: " + data["id"])
 //     });
-//   });
-// });
-
+      });
+    });
+  });
 });
