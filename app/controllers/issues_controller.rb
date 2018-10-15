@@ -5,12 +5,16 @@ class IssuesController < ApplicationController
     if params[:user_id]
       @issues = User.find(params[:user_id]).issues.order_by_latest
       # respond_to do |format|
-        # format.html { render :index }
-        # format.json { render json: @issues, status: 200 }
+      #   format.html { render :index }
+      #   format.json { render json: @issues, status: 200 }
       # end
       render json: @issues, layout: false, status: 200
     else
       @issues = Issue.all.order_by_latest
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @issues, status: 200 }
+      end
     end
   end 
     
