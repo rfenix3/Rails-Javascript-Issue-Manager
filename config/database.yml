@@ -24,6 +24,9 @@ production:
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000 
+  encoding: unicode
   database: db/production
-  
+  username: ymjmnbnbibzhle
+  password: 3527fa8189a93f88081a0ef5e6881121bf7e61bb9761bf5d4457ec9c37b16a67
+
 
