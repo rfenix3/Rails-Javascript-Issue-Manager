@@ -9,7 +9,7 @@ The service desk is the single point of contact for customers to report IT-relat
 ## Home Page
 ![Home Page screen shot](https://github.com/rfenix3/ruby-rails-crud-issue-manager/blob/master/app/assets/images/HomePage.png)
 
-[Home Page Screen Shot]https://drive.google.com/file/d/11A8aJzEuygNGPueLwSq0wN_jX5OOiPBK/view?usp=sharing
+[Home Page Screen Shot](https://drive.google.com/file/d/11A8aJzEuygNGPueLwSq0wN_jX5OOiPBK/view?usp=sharing)
 
 ## Characteristics of the Application
 1. Uses the Ruby on Rails framework (MVC or Model-View-Controller framework).
