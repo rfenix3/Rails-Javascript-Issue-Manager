@@ -23,7 +23,7 @@ The service desk is the single point of contact for customers to report IT-relat
 ## Table Relationship
 ![Model and Table Relationship](https://github.com/rfenix3/ruby-rails-crud-issue-manager/blob/master/app/assets/images/RubyRailsProjectTableRelationship.png)
 
-![Model and Table Relationship](https://drive.google.com/file/d/1DcYDJ9ynw8ujlpOo7TZuIcR1fwe7ojNa/view?usp=sharing)
+[Model and Table Relationship](https://drive.google.com/file/d/1DcYDJ9ynw8ujlpOo7TZuIcR1fwe7ojNa/view?usp=sharing)
 
 ## Application Features
 1. Allows user signin or signup.
